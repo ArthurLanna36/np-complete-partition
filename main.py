@@ -2,9 +2,6 @@ import numpy as np
 
 from run_single_length_tests import run_single_length_tests
 
-array = np.random.randint(1, 20, size=50)
-print("Array: ", array, "\n")
-
 algorithmOption = 1
 testsQuantity = 100
 arrayLength = 30
