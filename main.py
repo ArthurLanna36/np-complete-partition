@@ -1,27 +1,24 @@
 import numpy as np
 
-from Partition_Algorithms.partition_standard import equal_partition
-from Partition_Algorithms.partition_memorized_top_down import equal_partition_top_down
-from Partition_Algorithms.partition_tabulation_bottom_up import equal_partition_bottom_up
-from Partition_Algorithms.partition_bottom_up_optimization import equal_partition_bottom_up_optimized
+from run_single_length_tests import run_single_length_tests
 
 array = np.random.randint(1, 20, size=50)
-print(array)
+print("Array: ", array, "\n")
 
 algorithmOption = 1
+testsQuantity = 100
+arrayLength = 30
 
 match algorithmOption:
     case 1:
-        executionResult = equal_partition(array)
+        outputFileName = "equal_partition_results"
     case 2:
-        executionResult = equal_partition_top_down(array)
+        outputFileName = "memorizes_top_down_results"
     case 3:
-        executionResult = equal_partition_bottom_up(array)
+        outputFileName = "tabulation_bottom_up_results"
     case 4:
-        executionResult = equal_partition_bottom_up_optimized(array)
-    case _: raise Exception()
+        outputFileName = "bottom_up_optimized_results"
+    case _: raise ValueError("Invalid algorithm option. Choose a value between 1 and 4.")
 
-if executionResult:
-    print("True")
-else:
-    print("False")
+run_single_length_tests(algorithmOption, testsQuantity, arrayLength, outputFileName)
+print(f"Tests are finished. Results saved in {outputFileName}.csv")
