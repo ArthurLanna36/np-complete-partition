@@ -8,22 +8,20 @@ from Partition_Algorithms.partition_bottom_up_optimization import equal_partitio
 array = np.random.randint(1, 20, size=50)
 print(array)
 
-# if equal_partition(array):
-#     print("True")
-# else:
-#     print("False")
+algorithmOption = 1
 
-# if equal_partition(array):
-#     print("True")
-# else:
-#     print("False")
+match algorithmOption:
+    case 1:
+        executionResult = equal_partition(array)
+    case 2:
+        executionResult = equal_partition_top_down(array)
+    case 3:
+        executionResult = equal_partition_bottom_up(array)
+    case 4:
+        executionResult = equal_partition_bottom_up_optimized(array)
+    case _: raise Exception()
 
-# if equal_partition(array):
-#     print("True")
-# else:
-#     print("False")
-
-if equal_partition_bottom_up_optimized(array):
+if executionResult:
     print("True")
 else:
     print("False")
