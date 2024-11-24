@@ -1,9 +1,13 @@
-import numpy as np
 import pandas as pd
+import numpy as np
 import time
+import os
 
 # Function to execute the tests for multiple array lengths
 def run_multiple_length_tests(algorithm, tests_quantity_per_length, array_lengths, output_file):
+    output_directory = 'Tests/Multiple_Length_Tests'
+    os.makedirs(output_directory, exist_ok=True)
+    output_path = os.path.join(output_directory, output_file)
     results = []
 
     # Iterate over the specified array lengths
@@ -31,4 +35,4 @@ def run_multiple_length_tests(algorithm, tests_quantity_per_length, array_length
     # Save all test results in a CSV
     df = pd.DataFrame(results)
     df["Execution time (s)"] = df["Execution time (s)"].map(lambda x: f"{x:.10f}")
-    df.to_csv(f"{output_file}.csv", index=False)
+    df.to_csv(output_path, index=False)
