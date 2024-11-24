@@ -2,26 +2,8 @@ import numpy as np
 import pandas as pd
 import time
 
-from Partition_Algorithms.partition_standard import equal_partition
-from Partition_Algorithms.partition_memorized_top_down import equal_partition_top_down
-from Partition_Algorithms.partition_tabulation_bottom_up import equal_partition_bottom_up
-from Partition_Algorithms.partition_bottom_up_optimization import equal_partition_bottom_up_optimized
-
 # Function to execute the tests
-def run_single_length_tests(algorithm_option, tests_quantity, array_length, output_file):
-    # Select the algorithm that will be run
-    match algorithm_option:
-        case 1:
-            algorithm = equal_partition
-        case 2:
-            algorithm = equal_partition_top_down
-        case 3:
-            algorithm = equal_partition_bottom_up
-        case 4:
-            algorithm = equal_partition_bottom_up_optimized
-        case _:
-            raise ValueError("Invalid algorithm. Choose a value between 1 and 4")
-
+def run_single_length_tests(algorithm, tests_quantity, array_length, output_file):
     results = []
 
     # Execute a specified number of tests
