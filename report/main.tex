@@ -54,15 +54,35 @@ Apesar de sua dificuldade computacional, o problema da Partição é de grande r
 \section{Resultados e análise}
 Os testes foram realizados em uma máquina com Ryzen 7 5700x e 33 GB de RAM 3200 MHz e os gráficos gerados utilizando Pandas e MatPlotLib.
 
-\subsection{Tempo de execução}
+\subsection{Tempo de execução com vetores aleatórios}
 
-Ao analisarmos os tempos de execução, é possível observar a diferença significativa entre as implementações usando programação dinâmica e heurística em relação ao uso da força bruta (reta amarela). Para vetores maiores que 22 a implementação por força bruta domina assintoticamente todas as outras implementações. No entanto, para tamanhos menores que 22, ela se mostra extremamente rápida, executando 7 vezes mais rápida que a implementação utilizando programação dinâmica bottom-up.
+Os próximo testes foram realizados com vetores aleatórios buscando uma ánalise individual de cada algoritmo, demostrando a tendência de crescimento de cada algoritmo. 
 
 \begin{figure} [H]
     \centering
     \caption{Tempo de execução x Tamanho do vetor}
-    \includegraphics[width=1\textwidth]{images/multiple_length_tabulation_bottom_up}
+    \includegraphics[width=1\textwidth]{images/means_comparasion.png}
 \end{figure}
+
+\begin{figure} [H]
+    \centering
+    \caption{Tempo de execução x Tamanho do vetor}
+    \includegraphics[width=1\textwidth]{images/means_comparasion.png}
+\end{figure}
+
+\begin{figure} [H]
+    \centering
+    \caption{Tempo de execução x Tamanho do vetor}
+    \includegraphics[width=1\textwidth]{images/means_comparasion.png}
+\end{figure}
+
+\begin{figure} [H]
+    \centering
+    \caption{Tempo de execução x Tamanho do vetor}
+    \includegraphics[width=1\textwidth]{images/means_comparasion.png}
+\end{figure}
+
+Ao analisarmos os tempos de execução, é possível observar a diferença significativa entre as implementações usando programação dinâmica e otimização de espaço em relação ao uso da força bruta (reta amarela). Para vetores maiores que 22 a implementação por força bruta domina assintoticamente todas as outras implementações. No entanto, para tamanhos menores que 22, ela se mostra extremamente rápida, executando 7 vezes mais rápida que a implementação utilizando programação dinâmica bottom-up, além disso, as implementações utilizando programação dinâmica e otimização de espaço de memória apresentam um desempenho parecido.
 
 \subsection{Comparação entre heurística}
 
