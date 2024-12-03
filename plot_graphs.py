@@ -38,15 +38,28 @@ def plot_means(files):
         plt.scatter(array_size, exec_time, color=color, alpha=0.2, marker='o')  # Line plotj
 
         # Plot points
-        if ((filename == "Multiple_Length_Tests/multiple_length_tabulation_bottom_up") or (filename == "Multiple_Length_Tests/multiple_length_equal_partition")):
+        if (filename == "Multiple_Length_Tests/multiple_length_bottom_up_optimized"): 
             for i in df.index:
-                plt.text(array_size[i],
-                        exec_time[i] * 1.2,
-                        f'{exec_time[i]:.5f}',
-                        ha='center',
-                        va='bottom',
-                        color=color[0],
-                        fontsize=10)
+                if (i%2 == 0):
+                    plt.text(array_size[i],
+                            exec_time[i] * 1.2,
+                            f'{exec_time[i]:.5f}',
+                            ha='center',
+                            va='bottom',
+                            color=color[0],
+                            fontsize=10,
+                            rotation=65)
+
+        if (filename == "Multiple_Length_Tests/multiple_length_equal_partition"):
+            for i in df.index:
+                if (i%2 == 0):
+                    plt.text(array_size[i],
+                            exec_time[i] * 1.2,
+                            f'{exec_time[i]:.5f}',
+                            ha='center',
+                            va='bottom',
+                            color=color[0],
+                            fontsize=10)
 
     plt.ylabel('Execution time (s)')
     plt.xlabel('Array size')
@@ -57,7 +70,6 @@ def plot_means(files):
     plt.yscale('log')
 
     path =  "Tests/" + filename
-    plt.savefig(path, dpi=300, bbox_inches='tight')
     plt.show()
 
 plot_means(files)

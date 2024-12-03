@@ -1,0 +1,109 @@
+\documentclass{article}
+
+% Packages
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{lipsum}
+\usepackage{listings}
+\usepackage{float}
+\usepackage[portuguese]{babel}
+\DeclareUnicodeCharacter{2212}{\ensuremath{-}}
+
+% Page setup
+\geometry{a4paper, margin = 2 cm}
+
+\begin{document}
+
+% cover
+\input{cover.tex}
+
+% table of contents
+\newpage
+\thispagestyle{empty}
+\tableofcontents
+
+% body
+\newpage
+\large % document text size
+
+\section{Introdução}
+
+\subsection{Objetivo e escolha do problema}
+
+Este trabalho tem como objetivo realizar um estudo comparativo de diferentes abordagens para resolver um problema NP-Completo. A ideia central desse estudo é demonstrar métodos e teorias que tentam resolver um determinado algoritmo de classe NP Completo. Os métodos utilizados foram escolhidos pela sua eficácia e imparcialidade para análise de resultados, com base em casos de teste diversos. As teorias que buscam explicar e resolver problemas dessa categoria, foram retiradas de livros e artigos de autores especializados no assunto.
+
+O problema escolhido para o presente trabalho foi o Problema da Partição. A escolha desse problema se dá a sua premissa simples e interessante. O interesse se deu pela natureza do problema ser comum em aplicações modernas, por se tratar de uma operação simples de comparação de vetores.
+
+\subsection{Importância do assunto}
+
+Esse trabalho é de grande relevância na área da computação, pois se trata de um assunto que não possui um desfecho. Existem implementações modernas que resolvem esse problema de forma, consideravelmente, eficiente para um NP Completo. Mesmo possuindo essas implementações, o estudo de um algoritmo NP Completo pode colaborar com a resolução de outro NP Completo.
+
+\section{Análise de complexidade}
+
+\subsection{Problema da Partição}
+
+O problema da partição (\textit{Partition Problem}) é um dos problemas clássicos em teoria da complexidade computacional e pertence à classe dos problemas NP-completos, como demonstrado por Garey e Johnson~\cite{garey1979computers}. Ele pode ser descrito da seguinte forma: dado um conjunto $S = \{s_1, s_2, \dots, s_n\}$ de $n$ números inteiros, o objetivo é determinar se é possível dividir $S$ em dois subconjuntos disjuntos $S_1$ e $S_2$ de modo que a soma dos elementos de $S_1$ seja igual à soma dos elementos de $S_2$, isto é, $\sum_{s \in S_1}s = \sum_{s \in S_2}s$.
+
+A classificação do problema da partição como NP-completo implica que:
+\begin{enumerate}
+    \item Ele está em NP, pois uma solução candidata (os subconjuntos $S_1$ e $S_2$) pode ser verificada em tempo polinomial.
+    \item Ele é pelo menos tão difícil quanto qualquer outro problema em NP, uma vez que pode ser reduzido em tempo polinomial a partir de outros problemas NP-completos, como o problema da soma subconjunta (\textit{Subset Sum})~\cite{karp1972reducibility}.
+\end{enumerate}
+
+O problema da partição é relevante em diversas áreas, como otimização, teoria dos números e aplicações práticas, incluindo alocação de recursos e balanceamento de carga em sistemas computacionais~\cite{martello1981knapsack}. Embora o problema seja NP-completo no caso geral, existem abordagens específicas para resolvê-lo em determinadas circunstâncias:
+\begin{itemize}
+\item \textbf{Recursão simples}: A abordagem recursiva explora todas as possíveis partições do conjunto, caracterizando-se por uma complexidade exponencial \(O(2^n)\). Apesar de ser conceitualmente simples, essa abordagem não é eficiente, dado o número significativo de subproblemas repetidos, o que a torna impraticável para conjuntos maiores~\cite{cormen2009introduction}.
+\item \textbf{Top-Down com memoization}: Essa técnica melhora a eficiência da recursão utilizando uma tabela (ou cache) para armazenar os resultados dos subproblemas já resolvidos. Dessa forma, evita-se a recalculação redundante, reduzindo a complexidade para \(O(n \cdot T)\), onde \(T\) é a soma total dos elementos do conjunto. O uso de memoization é especialmente vantajoso em problemas onde apenas uma parte das combinações possíveis é explorada, como no cálculo de subsequências ou caminhos otimizados~\cite{cormen2009introduction}.
+
+\item \textbf{Bottom-Up com tabulação}: Neste método, resolve-se os subproblemas menores iterativamente, partindo dos casos base até o problema completo. A tabulação utiliza uma tabela para armazenar os resultados intermediários de forma sistemática, garantindo que cada subproblema seja resolvido uma única vez. Essa abordagem elimina a sobrecarga de chamadas recursivas e o risco de estouro de pilha, com a mesma eficiência de \(O(n \cdot T)\). Exemplos incluem algoritmos para subsequências e cálculo de somas parciais~\cite{cormen2009introduction, garey1979computers}.
+
+\item \textbf{Bottom-Up com otimização de espaço}: Esta variação da tabulação reduz o consumo de memória ao utilizar apenas o armazenamento necessário para resolver o subproblema atual. Em vez de manter uma tabela completa, utiliza-se um número fixo de variáveis ou uma estrutura compacta que armazena apenas as últimas iterações relevantes. Essa técnica é eficiente em problemas lineares, como a resolução do problema da mochila ou subsequências~\cite{cormen2009introduction, garey1979computers}.
+\end{itemize}
+
+A importância do problema da partição decorre de sua simplicidade e de sua aplicabilidade como modelo para outros problemas de partição e balanceamento. Sua dificuldade intrínseca ressalta as limitações dos algoritmos polinomiais e os desafios relacionados à conjectura $P \neq NP$~\cite{papadimitriou1994computational}.
+
+
+\subsection{Versão NP Difícil}
+
+A versão NP-hard do problema da partição surge em contextos onde os elementos do conjunto possuem pesos adicionais ou restrições complexas, como no problema da partição com pesos (\textit{Weighted Partition Problem}) ou com múltiplos subconjuntos. Nessa variante, o objetivo é dividir o conjunto $S = \{s_1, s_2, \dots, s_n\}$ em $k$ subconjuntos disjuntos \( S_1, S_2, \dots, S_k \), tal que as somas dos pesos em cada subconjunto estejam equilibradas, enquanto se respeitam restrições adicionais, como dependências entre os elementos.
+
+Ao contrário da versão clássica, esta generalização é NP-hard, pois aumenta significativamente o espaço de soluções possíveis e incorpora características de outros problemas difíceis, como o problema do caixeiro-viajante (\textit{Traveling Salesman Problem}) e o problema de particionamento de grafos (\textit{Graph Partitioning})~\cite{garey1979computers, papadimitriou1994computational}. 
+
+Essa variante é amplamente utilizada em otimização de sistemas distribuídos, onde o balanceamento de carga entre servidores deve considerar não apenas o volume de trabalho, mas também a conectividade e a latência entre os componentes~\cite{martello1981knapsack}.
+
+
+\section{Metodologia}
+
+
+\section{Resultados e análise}
+Os testes foram realizados em uma máquina com Ryzen 7 5700x e 33 GB de RAM 3200 MHz e os gráficos gerados utilizando Pandas e MatPlotLib.
+
+\subsection{Tempo de execução}
+
+Ao analisarmos os tempos de execução, é possível observar a diferença significativa entre as implementações usando programação dinâmica e heurística em relação ao uso da força bruta (reta amarela). Para vetores maiores que 22 a implementação por força bruta domina assintoticamente todas as outras implementações. No entanto, para tamanhos menores que 22, ela se mostra extremamente rápida, executando 7 vezes mais rápida que a implementação utilizando programação dinâmica bottom-up.
+
+\begin{figure} [H]
+    \centering
+    \caption{Tempo de execução x Tamanho do vetor}
+    \includegraphics[width=1\textwidth]{images/multiple_length_tabulation_bottom_up}
+\end{figure}
+
+\subsection{Comparação entre heurística}
+
+
+\section{Conclusão}
+
+
+\bibliographystyle{plain}
+\bibliography{references}
+\begin{thebibliography}{99}
+\bibitem{garey1979computers} Garey, M. R., \& Johnson, D. S. (1979). \textit{Computers and Intractability: A Guide to the Theory of NP-Completeness}. W. H. Freeman.
+\bibitem{karp1972reducibility} Karp, R. M. (1972). Reducibility Among Combinatorial Problems. \textit{Complexity of Computer Computations}, 85-103.
+\bibitem{martello1981knapsack} Martello, S., \& Toth, P. (1981). \textit{Knapsack Problems: Algorithms and Computer Implementations}. Wiley.
+\bibitem{cormen2009introduction} Cormen, T. H., Leiserson, C. E., Rivest, R. L., \& Stein, C. (2009). \textit{Introduction to Algorithms} (3rd ed.). MIT Press.
+\bibitem{papadimitriou1994computational} Papadimitriou, C. H. (1994). \textit{Computational Complexity}. Addison-Wesley.
+\end{thebibliography}
+
+\section{Anexo}
+
+\end{document}

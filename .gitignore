@@ -6,3 +6,10 @@
 *.iml
 out
 gen
+
+*.toc
+*.synctex.gz
+*.log
+*.fls
+*.fdb_latexmk
+*.aux
