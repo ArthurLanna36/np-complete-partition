@@ -38,21 +38,10 @@ As aplicações do problema da Partição são variadas e abrangem diversas áre
 
 Apesar de sua dificuldade computacional, o problema da Partição é de grande relevância prática, motivando o desenvolvimento de algoritmos eficientes, tanto exatos quanto heurísticos, para lidar com instâncias específicas. Este trabalho busca explorar as características do problema, analisar algoritmos clássicos e propor implementações que contribuam para o entendimento de sua solução e impacto prático.
 
-\section{Análise de complexidade}
+\section{Algoritmos}
 
-\subsection{Problema da Partição}
-
-O problema da partição (\textit{Partition Problem}) é um dos problemas clássicos em teoria da complexidade computacional e pertence à classe dos problemas NP-completos, como demonstrado por Garey e Johnson~\cite{garey1979computers}. Ele pode ser descrito da seguinte forma: dado um conjunto $S = \{s_1, s_2, \dots, s_n\}$ de $n$ números inteiros, o objetivo é determinar se é possível dividir $S$ em dois subconjuntos disjuntos $S_1$ e $S_2$ de modo que a soma dos elementos de $S_1$ seja igual à soma dos elementos de $S_2$, isto é, $\sum_{s \in S_1}s = \sum_{s \in S_2}s$.
-
-A classificação do problema da partição como NP-completo implica que:
-\begin{enumerate}
-    \item Ele está em NP, pois uma solução candidata (os subconjuntos $S_1$ e $S_2$) pode ser verificada em tempo polinomial.
-    \item Ele é pelo menos tão difícil quanto qualquer outro problema em NP, uma vez que pode ser reduzido em tempo polinomial a partir de outros problemas NP-completos, como o problema da soma subconjunta (\textit{Subset Sum})~\cite{karp1972reducibility}.
-\end{enumerate}
-
-O problema da partição é relevante em diversas áreas, como otimização, teoria dos números e aplicações práticas, incluindo alocação de recursos e balanceamento de carga em sistemas computacionais~\cite{martello1981knapsack}. Embora o problema seja NP-completo no caso geral, existem abordagens específicas para resolvê-lo em determinadas circunstâncias:
-\begin{itemize}
 \item \textbf{Recursão simples}: A abordagem recursiva explora todas as possíveis partições do conjunto, caracterizando-se por uma complexidade exponencial \(O(2^n)\). Apesar de ser conceitualmente simples, essa abordagem não é eficiente, dado o número significativo de subproblemas repetidos, o que a torna impraticável para conjuntos maiores~\cite{cormen2009introduction}.
+
 \item \textbf{Top-Down com memoization}: Essa técnica melhora a eficiência da recursão utilizando uma tabela (ou cache) para armazenar os resultados dos subproblemas já resolvidos. Dessa forma, evita-se a recalculação redundante, reduzindo a complexidade para \(O(n \cdot T)\), onde \(T\) é a soma total dos elementos do conjunto. O uso de memoization é especialmente vantajoso em problemas onde apenas uma parte das combinações possíveis é explorada, como no cálculo de subsequências ou caminhos otimizados~\cite{cormen2009introduction}.
 
 \item \textbf{Bottom-Up com tabulação}: Neste método, resolve-se os subproblemas menores iterativamente, partindo dos casos base até o problema completo. A tabulação utiliza uma tabela para armazenar os resultados intermediários de forma sistemática, garantindo que cada subproblema seja resolvido uma única vez. Essa abordagem elimina a sobrecarga de chamadas recursivas e o risco de estouro de pilha, com a mesma eficiência de \(O(n \cdot T)\). Exemplos incluem algoritmos para subsequências e cálculo de somas parciais~\cite{cormen2009introduction, garey1979computers}.
@@ -60,10 +49,7 @@ O problema da partição é relevante em diversas áreas, como otimização, teo
 \item \textbf{Bottom-Up com otimização de espaço}: Esta variação da tabulação reduz o consumo de memória ao utilizar apenas o armazenamento necessário para resolver o subproblema atual. Em vez de manter uma tabela completa, utiliza-se um número fixo de variáveis ou uma estrutura compacta que armazena apenas as últimas iterações relevantes. Essa técnica é eficiente em problemas lineares, como a resolução do problema da mochila ou subsequências~\cite{cormen2009introduction, garey1979computers}.
 \end{itemize}
 
-A importância do problema da partição decorre de sua simplicidade e de sua aplicabilidade como modelo para outros problemas de partição e balanceamento. Sua dificuldade intrínseca ressalta as limitações dos algoritmos polinomiais e os desafios relacionados à conjectura $P \neq NP$~\cite{papadimitriou1994computational}.
-
-
-\subsection{Versão NP Difícil}
+\section{Versão NP Difícil}
 
 A versão NP-hard do problema da partição surge em contextos onde os elementos do conjunto possuem pesos adicionais ou restrições complexas, como no problema da partição com pesos (\textit{Weighted Partition Problem}) ou com múltiplos subconjuntos. Nessa variante, o objetivo é dividir o conjunto $S = \{s_1, s_2, \dots, s_n\}$ em $k$ subconjuntos disjuntos \( S_1, S_2, \dots, S_k \), tal que as somas dos pesos em cada subconjunto estejam equilibradas, enquanto se respeitam restrições adicionais, como dependências entre os elementos.
 
@@ -71,9 +57,7 @@ Ao contrário da versão clássica, esta generalização é NP-hard, pois aument
 
 Essa variante é amplamente utilizada em otimização de sistemas distribuídos, onde o balanceamento de carga entre servidores deve considerar não apenas o volume de trabalho, mas também a conectividade e a latência entre os componentes~\cite{martello1981knapsack}.
 
-
 \section{Metodologia}
-
 
 \section{Resultados e análise}
 Os testes foram realizados em uma máquina com Ryzen 7 5700x e 33 GB de RAM 3200 MHz e os gráficos gerados utilizando Pandas e MatPlotLib.
