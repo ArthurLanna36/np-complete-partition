@@ -1,3 +1,5 @@
+import numpy as np
+
 from run_single_length_tests import run_single_length_tests
 from run_multiple_length_tests import run_multiple_length_tests
 
@@ -29,12 +31,13 @@ match algorithmOption:
     case _: raise ValueError("Invalid algorithm option. Choose a value between 1 and 4.")
 
 if testType == 1:
-    arrayLength = 30
-    testsQuantity = 100
+    arrayLength = 300
+    testsQuantity = 1000
     run_single_length_tests(algorithm, testsQuantity, arrayLength, singleLengthResultFile)
     print(f"Tests are finished. Results saved in {singleLengthResultFile}")
 elif testType == 2:
-    arrayLengths = [10, 20, 30, 40, 50]
+    arrayLengths = np.arange(5, 305, 5).tolist()
+    print(arrayLengths)
     testsQuantityPerLength = 100
     run_multiple_length_tests(algorithm, testsQuantityPerLength, arrayLengths, multipleLengthResultFile)
     print(f"Tests are finished. Results saved in {multipleLengthResultFile}")
