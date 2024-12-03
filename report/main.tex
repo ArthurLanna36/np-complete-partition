@@ -49,14 +49,6 @@ Apesar de sua dificuldade computacional, o problema da Partição é de grande r
 \item \textbf{Bottom-Up com otimização de espaço}: Esta variação da tabulação reduz o consumo de memória ao utilizar apenas o armazenamento necessário para resolver o subproblema atual. Em vez de manter uma tabela completa, utiliza-se um número fixo de variáveis ou uma estrutura compacta que armazena apenas as últimas iterações relevantes. Essa técnica é eficiente em problemas lineares, como a resolução do problema da mochila ou subsequências~\cite{cormen2009introduction, garey1979computers}.
 \end{itemize}
 
-\section{Versão NP Difícil}
-
-A versão NP-hard do problema da partição surge em contextos onde os elementos do conjunto possuem pesos adicionais ou restrições complexas, como no problema da partição com pesos (\textit{Weighted Partition Problem}) ou com múltiplos subconjuntos. Nessa variante, o objetivo é dividir o conjunto $S = \{s_1, s_2, \dots, s_n\}$ em $k$ subconjuntos disjuntos \( S_1, S_2, \dots, S_k \), tal que as somas dos pesos em cada subconjunto estejam equilibradas, enquanto se respeitam restrições adicionais, como dependências entre os elementos.
-
-Ao contrário da versão clássica, esta generalização é NP-hard, pois aumenta significativamente o espaço de soluções possíveis e incorpora características de outros problemas difíceis, como o problema do caixeiro-viajante (\textit{Traveling Salesman Problem}) e o problema de particionamento de grafos (\textit{Graph Partitioning})~\cite{garey1979computers, papadimitriou1994computational}. 
-
-Essa variante é amplamente utilizada em otimização de sistemas distribuídos, onde o balanceamento de carga entre servidores deve considerar não apenas o volume de trabalho, mas também a conectividade e a latência entre os componentes~\cite{martello1981knapsack}.
-
 \section{Metodologia}
 
 \section{Resultados e análise}
