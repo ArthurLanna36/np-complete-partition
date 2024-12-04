@@ -9,8 +9,8 @@ from Partition_Algorithms.partition_memorized_top_down import equal_partition_to
 from Partition_Algorithms.partition_tabulation_bottom_up import equal_partition_bottom_up
 from Partition_Algorithms.partition_bottom_up_optimization import equal_partition_bottom_up_optimized
 
-algorithmOption = 4
-testType = 3
+algorithmOption = 1
+testType = 2
 
 match algorithmOption:
     case 1:
@@ -19,7 +19,7 @@ match algorithmOption:
         algorithm = equal_partition
     case 2:
         singleLengthResultFile = "single_length_memorizes_top_down.csv"
-        multipleLengthResultFile = "multiple_length_memorizes_top_down.csv"
+        multipleLengthResultFile = "multiple_length_memorized_top_down.csv"
         algorithm = equal_partition_top_down
     case 3:
         singleLengthResultFile = "single_length_tabulation_bottom_up.csv"
@@ -37,9 +37,9 @@ if testType == 1:
     run_single_length_tests(algorithm, testsQuantity, arrayLength, singleLengthResultFile)
     print(f"Tests are finished. Results saved in {singleLengthResultFile}")
 elif testType == 2:
-    arrayLengths = np.arange(5, 305, 5).tolist()
+    arrayLengths = np.arange(5, 55, 5).tolist()
     print(arrayLengths)
-    testsQuantityPerLength = 100
+    testsQuantityPerLength = 25
     run_multiple_length_tests(algorithm, testsQuantityPerLength, arrayLengths, multipleLengthResultFile)
     print(f"Tests are finished. Results saved in {multipleLengthResultFile}")
 elif testType == 3:

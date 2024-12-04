@@ -3,7 +3,7 @@ import numpy as np
 import time
 import os
 
-# Function to execute a combined test for multiple algorithms on the same input data
+# Function to execute a combined test for multiple algorithms on the same input
 def run_comparative_tests(algorithms, tests_quantity, array_length, output_file):
     # Define the directory for saving results
     output_directory = "Tests/Combined_Tests"
