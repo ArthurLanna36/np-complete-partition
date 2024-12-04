@@ -40,6 +40,7 @@ Apesar de sua dificuldade computacional, o problema da Partição é de grande r
 
 \section{Algoritmos}
 
+\begin{itemize}
 \item \textbf{Recursão simples}: A abordagem recursiva explora todas as possíveis partições do conjunto, caracterizando-se por uma complexidade exponencial \(O(2^n)\). Apesar de ser conceitualmente simples, essa abordagem não é eficiente, dado o número significativo de subproblemas repetidos, o que a torna impraticável para conjuntos maiores~\cite{cormen2009introduction}.
 
 \item \textbf{Top-Down com memoization}: Essa técnica melhora a eficiência da recursão utilizando uma tabela (ou cache) para armazenar os resultados dos subproblemas já resolvidos. Dessa forma, evita-se a recalculação redundante, reduzindo a complexidade para \(O(n \cdot T)\), onde \(T\) é a soma total dos elementos do conjunto. O uso de memoization é especialmente vantajoso em problemas onde apenas uma parte das combinações possíveis é explorada, como no cálculo de subsequências ou caminhos otimizados~\cite{cormen2009introduction}.
@@ -56,30 +57,30 @@ Os testes foram realizados em uma máquina com Ryzen 7 5700x e 33 GB de RAM 3200
 
 \subsection{Tempo de execução com vetores aleatórios}
 
-Os próximo testes foram realizados com vetores aleatórios buscando uma ánalise individual de cada algoritmo, demostrando a tendência de crescimento de cada algoritmo. 
+Os próximo testes foram realizados com vetores aleatórios buscando uma ánalise individual de cada algoritmo, demonstrando a tendência de crescimento quando aumentamos o tamanho do vetor, é importante salientar que em cada teste geramos um vetor aleatório de tamanho maior que o anterior, como a soma dos valores influenciam tanto quanto o tamanho do vetor, quanto maior o vetor, mais a soma dos valores aleatórios influencia no tempo de execução causando instabilidade nos resultados. 
 
 \begin{figure} [H]
     \centering
-    \caption{Tempo de execução x Tamanho do vetor}
-    \includegraphics[width=1\textwidth]{images/means_comparasion.png}
+    \caption{Equal Partition \(O(2^n)\)}
+    \includegraphics[width=1\textwidth]{images/multiple_length_equal_partition.png}
 \end{figure}
 
 \begin{figure} [H]
     \centering
     \caption{Tempo de execução x Tamanho do vetor}
-    \includegraphics[width=1\textwidth]{images/means_comparasion.png}
+    \includegraphics[width=1\textwidth]{images/multiple_length_bottom_up_optimized.png}
 \end{figure}
 
 \begin{figure} [H]
     \centering
     \caption{Tempo de execução x Tamanho do vetor}
-    \includegraphics[width=1\textwidth]{images/means_comparasion.png}
+    \includegraphics[width=1\textwidth]{images/multiple_length_memorizes_top_down.png}
 \end{figure}
 
 \begin{figure} [H]
     \centering
     \caption{Tempo de execução x Tamanho do vetor}
-    \includegraphics[width=1\textwidth]{images/means_comparasion.png}
+    \includegraphics[width=1\textwidth]{images/multiple_length_tabulation_bottom_up.png}
 \end{figure}
 
 Ao analisarmos os tempos de execução, é possível observar a diferença significativa entre as implementações usando programação dinâmica e otimização de espaço em relação ao uso da força bruta (reta amarela). Para vetores maiores que 22 a implementação por força bruta domina assintoticamente todas as outras implementações. No entanto, para tamanhos menores que 22, ela se mostra extremamente rápida, executando 7 vezes mais rápida que a implementação utilizando programação dinâmica bottom-up, além disso, as implementações utilizando programação dinâmica e otimização de espaço de memória apresentam um desempenho parecido.

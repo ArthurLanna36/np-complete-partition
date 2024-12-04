@@ -27,22 +27,25 @@ def plot_means(filename, color):
     array_size = df["Array size"]
     exec_time = df["Execution time (s)"]
 
+    plt.figure(figsize=(12, 8))
+
     # Plot datas
     plt.plot(array_size, exec_time, label=filename, color=color)
 
-    plt.scatter(array_size, exec_time, color=color, alpha=0.2, marker='o')  # Line plotj
-
     # Plot points
     for i in df.index:
-        if (i%10 == 0):
+        if (array_size[i] % 50.0 == 0.0):
+            plt.scatter(array_size[i],
+                        exec_time[i],
+                        color=color,
+                        marker='o')
             plt.text(array_size[i],
-                    exec_time[i] * 1.2,
+                    exec_time[i] + 0.005,
                     f'{exec_time[i]:.5f}',
                     ha='center',
                     va='bottom',
                     color=color[0],
-                    fontsize=5,
-                    rotation=65)
+                    fontsize=10)
 
     plt.ylabel('Execution time (s)')
     plt.xlabel('Array size')
@@ -50,7 +53,9 @@ def plot_means(filename, color):
     plt.legend()
     plt.grid(True)
 
-    # plt.yscale('log')
+    max = exec_time[len(exec_time) - 1] * 1.5
+
+    plt.ylim(0, max)
 
     path =  "Tests/" + filename
     plt.savefig(path, dpi=300)
