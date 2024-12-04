@@ -67,26 +67,34 @@ Os próximo testes foram realizados com vetores aleatórios buscando uma ánalis
 
 \begin{figure} [H]
     \centering
-    \caption{Tempo de execução x Tamanho do vetor}
+    \caption{Bottom up optimized \(O(n \cdot T)\)} 
     \includegraphics[width=1\textwidth]{images/multiple_length_bottom_up_optimized.png}
 \end{figure}
 
 \begin{figure} [H]
     \centering
-    \caption{Tempo de execução x Tamanho do vetor}
+    \caption{Memorizes Top Down \(O(n \cdot T)\)}
     \includegraphics[width=1\textwidth]{images/multiple_length_memorizes_top_down.png}
 \end{figure}
 
 \begin{figure} [H]
     \centering
-    \caption{Tempo de execução x Tamanho do vetor}
+    \caption{Tabulation Bottom Up \(O(n \cdot T)\)}
     \includegraphics[width=1\textwidth]{images/multiple_length_tabulation_bottom_up.png}
 \end{figure}
 
-Ao analisarmos os tempos de execução, é possível observar a diferença significativa entre as implementações usando programação dinâmica e otimização de espaço em relação ao uso da força bruta (reta amarela). Para vetores maiores que 22 a implementação por força bruta domina assintoticamente todas as outras implementações. No entanto, para tamanhos menores que 22, ela se mostra extremamente rápida, executando 7 vezes mais rápida que a implementação utilizando programação dinâmica bottom-up, além disso, as implementações utilizando programação dinâmica e otimização de espaço de memória apresentam um desempenho parecido.
+Ao analisarmos os tempos de execução, é possível observar a diferença significativa entre as implementações usando programação dinâmica e em relação ao uso da força bruta (Equal Partition). Para vetores maiores que 22 a implementação por força bruta domina assintoticamente todas as outras implementações. No entanto, para tamanhos menores que 22, ela se mostra extremamente rápida, executando 7 vezes mais rápida que a implementação utilizando programação dinâmica bottom-up, além disso, as implementações utilizando programação dinâmica apresentam um desempenho parecido como era esperado.
 
-\subsection{Comparação entre heurística}
+\newpage
 
+\subsection{Tempo de execução com vetores iguais}
+Nesse testes é gerado um vetor aleatório de tamanho 300, cada algoritmo com excessão do algoritmo de força bruta é executado tendo como entrada esse vetor. Este teste tem como objetivo comparar o desempenho dos algoritmos que utiilizam de programação dinâmica para resolverem o problema.
+
+\begin{figure} [H]
+    \centering
+    \caption{Teste algoritmos de Programação Dinâmica \(O(n \cdot T)\)}
+    \includegraphics[width=1\textwidth]{images/comparative_tests.png}
+\end{figure}
 
 \section{Conclusão}
 

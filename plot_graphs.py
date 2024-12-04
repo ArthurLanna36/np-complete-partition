@@ -8,6 +8,8 @@ files = ["Multiple_Length_Tests/multiple_length_bottom_up_optimized",
          "Multiple_Length_Tests/multiple_length_memorizes_top_down",
          "Multiple_Length_Tests/multiple_length_tabulation_bottom_up"]
 
+comp_filename = "comparative_tests"
+
 def parse_file(filename):
     path =  "Tests/" + filename + ".csv"
     df = pd.read_csv(path, sep=',')
@@ -61,9 +63,51 @@ def plot_means(filename, color):
     plt.savefig(path, dpi=300)
     plt.close()
 
-color_list = ['g', 'r', 'c', 'm', 'y', 'k']
+def plot_comp():
+    # Parse file
+    df = parse_file(comp_filename)
+
+    # Create x axle
+    algs = ["Bottom-Up Optimized", "Memorized Top-Down", "Tabulation Bottom-Up"]
+
+    # Get collumns
+    space_optim = df["Bottom-Up Optimized execution time (s)"].mean()
+    top_down = df["Memorized Top-Down execution time (s)"].mean()
+    bottom_up = df["Tabulation Bottom-Up execution time (s)"].mean()
+
+    # Calc means
+    exec_times = []
+    exec_times.append(space_optim)
+    exec_times.append(top_down)
+    exec_times.append(bottom_up)
+
+    plt.figure(figsize=(12, 8))
+
+    plt.xlabel('Execution time (s)')
+    plt.title('Dynamic programming - Execution time 300 lenght')
+
+    plt.xlim(0, 0.4)
+
+    color_list = ['c', 'm', 'k']
+    for i, exec_time in enumerate(exec_times):
+        color = color_list.pop()
+        plt.barh(algs[i], exec_time, color=color)
+
+    color_list = ['c', 'm', 'k']
+    for i, exec_time in enumerate(exec_times):
+        color = color_list.pop()
+        plt.text(exec_time + 0.01, i, f'{exec_time:.2f}s', va='center', color=color)
+
+    plt.tight_layout()  # Ajusta os elementos para não ficarem cortados
+    path =  "Tests/" + comp_filename
+    plt.savefig(path, dpi=300)
+    plt.close()
+
+color_list = ['c', 'm', 'y', 'k']
 
 
 for filename in files:
     color = color_list.pop()
     plot_means(filename, color)
+
+plot_comp()
